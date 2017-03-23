@@ -1,0 +1,6 @@
+C:\Users\prana\tiy\week-2\weekend\blackjack\blackjack\bin\Debug\blackjack.exe.config
+C:\Users\prana\tiy\week-2\weekend\blackjack\blackjack\bin\Debug\blackjack.exe
+C:\Users\prana\tiy\week-2\weekend\blackjack\blackjack\bin\Debug\blackjack.pdb
+C:\Users\prana\tiy\week-2\weekend\blackjack\blackjack\obj\Debug\blackjack.csprojResolveAssemblyReference.cache
+C:\Users\prana\tiy\week-2\weekend\blackjack\blackjack\obj\Debug\blackjack.exe
+C:\Users\prana\tiy\week-2\weekend\blackjack\blackjack\obj\Debug\blackjack.pdb
