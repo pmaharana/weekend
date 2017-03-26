@@ -95,7 +95,7 @@ namespace blackjack
             List<Card> randomDeck, List<Card> playerHand, List<Card> dealerHand)
         {
 
-            while (playerTotal != 21 && dealerTotal != 21 && count < 3 && playerTotal < 22 && stand == true)
+            while (playerTotal != 21 && dealerTotal != 21 && count < 4 && playerTotal < 22 && stand == true)
             {
 
                 Console.WriteLine("Would you like to hit or stand? Enter 1 to hit or 2 to stand");
@@ -106,6 +106,10 @@ namespace blackjack
                     DealPlayerCards(randomDeck, playerHand);
                     playerTotal = GetHandTotal(playerHand);
                     Console.WriteLine($"Your points [ {playerTotal} ]");
+                }
+                if (hitOrStand == 1 && playerTotal < 22 && count == 3) //Lvl 2, if player has less than 21 & 6 cards
+                {
+                    Console.WriteLine("congrats, you have less than 21 points with 6 cards");
                 }
 
                 dealerTotal = GetHandTotal(dealerHand);
