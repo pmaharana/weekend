@@ -90,45 +90,16 @@ namespace blackjack
             return number;
         }
 
-
-
-
-        //if player decides to stand..
-
-
-
-
-
-        static void Main(string[] args)
+        //mid game
+        static void TheMidGame(int playerTotal, int dealerTotal, int count, bool stand, int hitOrStand,
+            List<Card> randomDeck, List<Card> playerHand, List<Card> dealerHand)
         {
-
-            var randomDeck = CreateAndShuffleDeck(); //shuffle deck and declare to a variable 
-            int count = 0;
-            var playerHand = new List<Card>();
-            var playerTotal = 0;
-            var hitOrStand = 0;
-            var dealerHand = new List<Card>();
-            var dealerTotal = 0;
-            bool stand = true;
-
-            Console.WriteLine("Welcome to the Pranye West Blackjack challenge");
-            Console.ReadLine();
-
-            OpeningDraw(count, randomDeck, playerHand, dealerHand, playerTotal, dealerTotal);
-            playerTotal = GetHandTotal(playerHand);
-            dealerTotal = GetHandTotal(dealerHand);
-
-
-
-
-
-
 
             while (playerTotal != 21 && dealerTotal != 21 && count < 3 && playerTotal < 22 && stand == true)
             {
 
-             Console.WriteLine("Would you like to hit or stand? Enter 1 to hit or 2 to stand");
-             hitOrStand = HitOrStand(Console.ReadLine()); //asks the user the stand or hit
+                Console.WriteLine("Would you like to hit or stand? Enter 1 to hit or 2 to stand");
+                hitOrStand = HitOrStand(Console.ReadLine()); //asks the user the stand or hit
 
                 if (hitOrStand == 1 && playerTotal < 22) //if player hits, card is added to hand
                 {
@@ -145,22 +116,26 @@ namespace blackjack
                     dealerTotal = GetHandTotal(dealerHand);
                 }
 
-            if (dealerTotal < 16 && hitOrStand == 2) //checks to see if the dealer will hit or stand. continues to deal the dealer cards even if player stands
-            {
-                DealDealerCards(randomDeck, dealerHand);
-                Console.WriteLine("The dealer drew a card and placed it face down");
-                dealerTotal = GetHandTotal(dealerHand);
-            }
+                if (dealerTotal < 16 && hitOrStand == 2) //checks to see if the dealer will hit or stand. continues to deal the dealer cards even if player stands
+                {
+                    DealDealerCards(randomDeck, dealerHand);
+                    Console.WriteLine("The dealer drew a card and placed it face down");
+                    dealerTotal = GetHandTotal(dealerHand);
+                }
 
-            if (dealerTotal > 15 && hitOrStand == 2) //ends the game
-            {
-                stand = false;
-                
-            }
-            count++;
+                if (dealerTotal > 15 && hitOrStand == 2) //ends the game
+                {
+                    stand = false;
 
+                }
+                count++;
+
+            }
         }
 
+        //end game
+        static void TheEndGame(int playerTotal, int dealerTotal)
+        {
             if (playerTotal == 21)
             {
                 Console.WriteLine("BLACKJACK! You win the game!");
@@ -178,11 +153,11 @@ namespace blackjack
                 Console.WriteLine(" ");
                 Console.WriteLine("Let's compare cards");
                 Console.WriteLine("Your points: " + playerTotal + " and Dealer's points: " + dealerTotal);
-                if ((playerTotal > dealerTotal) && playerTotal< 22 || dealerTotal> 21)
+                if ((playerTotal > dealerTotal) && playerTotal < 22 || dealerTotal > 21)
                 {
                     Console.WriteLine("You win!");
                 }
-                if ((playerTotal<dealerTotal) && dealerTotal< 22 || playerTotal> 21)
+                if ((playerTotal < dealerTotal) && dealerTotal < 22 || playerTotal > 21)
                 {
                     Console.WriteLine("You lose!");
                 }
@@ -191,6 +166,46 @@ namespace blackjack
                     Console.WriteLine("The game is a tie???? WHAT! Let's try and play again...");
                 }
             }
+        }
+
+        static void Main(string[] args)
+        {
+
+            var randomDeck = CreateAndShuffleDeck(); //shuffle deck and declare to a variable 
+            int count = 0;
+            var playerHand = new List<Card>();
+            var playerTotal = 0;
+            var hitOrStand = 0;
+            var dealerHand = new List<Card>();
+            var dealerTotal = 0;
+            bool stand = true;
+
+            Console.WriteLine("Welcome to the Pranye West Blackjack challenge");
+            Console.ReadLine();
+
+            OpeningDraw(count, randomDeck, playerHand, dealerHand, playerTotal, dealerTotal);
+
+            playerTotal = GetHandTotal(playerHand);
+            dealerTotal = GetHandTotal(dealerHand);
+
+            TheMidGame(playerTotal, dealerTotal, count, stand, hitOrStand, randomDeck, playerHand, dealerHand);
+
+
+            playerTotal = GetHandTotal(playerHand);
+            dealerTotal = GetHandTotal(dealerHand);
+
+            TheEndGame(playerTotal, dealerTotal);
+
+        }
+    }
+}
+        
+
+
+
+
+
+            
               
 
 
@@ -226,7 +241,3 @@ namespace blackjack
             
           
             
-
-        }
-    }
-}
