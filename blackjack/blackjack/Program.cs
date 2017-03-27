@@ -104,6 +104,7 @@ namespace blackjack
                 if (hitOrStand == 1 && playerTotal < 22) //if player hits, card is added to hand
                 {
                     DealPlayerCards(randomDeck, playerHand);
+                        
                     playerTotal = GetHandTotal(playerHand);
                     Console.WriteLine($"Your points [ {playerTotal} ]");
                 }
