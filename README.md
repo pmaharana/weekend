@@ -1,7 +1,7 @@
 # Blackjack
 ### First logic based weekend assignment. Using C# to create a blackjack simulator
 
--This application shows my understanding of:
+##-This application shows my understanding of:
     - Methods
     - While loops
     - If and else statements
