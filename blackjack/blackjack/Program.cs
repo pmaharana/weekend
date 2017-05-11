@@ -32,6 +32,7 @@ namespace blackjack
             playerHand1.Add(randomDeck1[0]);
             Console.WriteLine($"You drew the {randomDeck1[0]}");
             randomDeck1.RemoveAt(0);
+            
             return playerHand1;
         }
 

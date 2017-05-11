@@ -23,19 +23,11 @@ namespace blackjack
             switch (this.Rank)
             {
                 case Rank.Ace:
-                    Console.WriteLine("Do you want this to be an 11?");
-                    bool yes = "yes" == (Console.ReadLine());
-
-                    if (yes)
-                    {
-                        rv = 11;
-                    }
-                    else
-                    {
-                        rv = 1;
-                    }
-                    
+                    rv = 11;
                     break;
+                   
+                 
+                    
                 case Rank.Deuce:
                     rv = 2;
                     break;
